@@ -1,0 +1,52 @@
+.listaProductos {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+.listaProductos__item {
+  display: flex;
+  justify-content: space-between; /* Distribuir espacio entre columns*/
+  align-items: center; /* Centrar items verticalmente*/
+  padding: 15px;
+}
+
+.listaProductos__nombre {
+  flex: 13; /* Aumentar para cubrir espacio disponible*/
+  text-align: left; /* Alinear los nombres al principio */
+  font-size: 19px;
+  font-family: sans-serif;
+  font-weight: 30;
+  color: rgb(104, 91, 91);
+  margin-left: 40px;
+}
+
+.listaProductos__precio {
+  text-align: right; 
+  flex: 3;
+  font-size: 24px;
+  font-weight: 540;
+  font-family: sans-serif;
+}
+
+.listaProductos__icono {
+  flex: 1; 
+  text-align: right; 
+  margin-left: 16px; 
+
+}
+
+.listaProductos__icono button {
+  border: none;
+  border-radius: 3px;
+  background-color: #8cbf00;
+}
+
+.carroCompra {
+  height: 28px;
+  padding-right: 16px;
+  padding-left: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #8cbf00;
+}
