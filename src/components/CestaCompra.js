@@ -1,84 +1,47 @@
-import './CestaCompra.css'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import './CestaCompra.css';
 
-function CestaCompra () {
-  const [total, setTotal] = useState(0)
+function CestaCompra({ carrito }) {
+  const [total, setTotal] = useState(0);
 
-  const productos = [
-    {
-      nombre: 'Xhekpon® crema facial 40ml',
-      precio: 6.49,
-      imagen: '/xhekpon-crema.jpg'
-    },
-    {
-      nombre: 'Cerave ® Crema Hidratante 340ml',
-      precio: 11.7,
-      imagen: '/cerave-crema.jpg'
-    },
-    {
-      nombre: 'Hyabak solución 10ml',
-      precio: 9.48,
-      imagen: '/hyabak-solucion.jpg'
-    }
-  ]
-
-  // calcular el precio total
-  const calcularTotal = () => {
-    const precioTotal = productos.reduce(
-      (acum, producto) => acum + producto.precio,
-      0
-    )
-    setTotal(precioTotal)
-  }
-
-  // llamando calcularTotal cuando se monta el componente
+  // calcular el precio total limitando decimales
   useEffect(() => {
-    calcularTotal()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    const precioTotal = carrito.reduce((acum, producto) => acum + parseFloat(producto.precio), 0);
+    setTotal(parseFloat(precioTotal.toFixed(2)));
+  }, [carrito]);
 
   return (
     <div>
       <table className='cesta-compra'>
         <thead>
           <tr className='fila-titulo'>
-            <th colSpan='2'>MI CESTA:</th>
+            <th colSpan='3'>MI CESTA:</th>
           </tr>
         </thead>
         <tbody className='cesta-body'>
-          {productos.map((producto, index) => (
+          {carrito.map((producto, index) => (
             <tr key={index}>
               <td className='fila-nombre'>
-                <img
-                  src={producto.imagen}
-                  alt={producto.nombre}
-                  className='producto-imagen'
-                />
+                <img src={producto.imagen} alt={producto.nombre} className='producto-imagen' />
                 {producto.nombre}
               </td>
               <td className='precio-producto'>
-                {producto.precio.toLocaleString('es-ES', {
-                  minimumFractionDigits: 2
-                })}{' '}
-                €
+                {parseFloat(producto.precio).toLocaleString('es-ES')} €
               </td>
             </tr>
           ))}
           <tr className='fila-total'>
-            <td>
+            <td colSpan='2'>
               <span className='texto-total'>TOTAL</span>
-              <span className='texto-total-productos'>
-                ({productos.length} productos)
-              </span>
+              <span className='texto-total-productos'>({carrito.length} productos)</span>
             </td>
-            <td className='precio-total'>
-              {total.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €
-            </td>
+            <td className='precio-total'>{total.toLocaleString('es-ES')} €</td>
           </tr>
         </tbody>
       </table>
     </div>
-  )
+  );
 }
 
-export default CestaCompra
+export default CestaCompra;
+

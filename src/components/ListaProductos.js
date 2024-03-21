@@ -1,30 +1,62 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './ListaProductos.css'
 
-function ListaProductos () {
-  const productos = [
-    { nombre: 'Lajusticia colágeno con magnesio 450comp', precio: '14.35' },
-    { nombre: 'Xhekpon® crema facial 40ml', precio: '6.49' },
-    { nombre: 'Cerave ® Crema Hidratante 340ml', precio: '11.70' },
-    { nombre: 'Hyabak solución 10ml', precio: '9.48' },
-    {
-      nombre: 'Fotoprotector ISDIN® Fusion Water SPF 50+ 50ml',
-      precio: '19.74'
-    },
-    { nombre: 'Piz Buin® Allergy SPF50+ loción 200ml', precio: '8.65' }
-  ]
+function ListaProductos ({ productos, carrito, agregarAlCarrito }) {
+  const [productosState, setProductosState] = useState(
+    productos.map(producto => ({
+      ...producto,
+      agregado: false // inicialmente no se añade ningun producto al carro
+    }))
+  )
+
+  // la funcion comprobará si el producto está en el carrito
+  const estaEnCarrito = producto => {
+    return carrito.some(item => item.nombre === producto.nombre)
+  }
+
+  // función para añadir un producto al carrito
+  const handleAgregarAlCarrito = producto => {
+    agregarAlCarrito(producto) // llamando la función padre 
+  }
+
+  useEffect(() => {
+    // actualizando el estado para definir los productos agregados
+
+    setProductosState(prevState =>
+      prevState.map(item => ({
+        ...item,
+        agregado: estaEnCarrito(item)
+      }))
+    )
+  }, [carrito]) //usando el hook de efecto
 
   return (
     <div>
       <ul className='listaProductos'>
-        {productos.map((producto, index) => (
+        {productosState.map((producto, index) => (
           <li key={index} className='listaProductos__item'>
             <span className='listaProductos__nombre'>{producto.nombre}</span>
-            <span className='listaProductos__precio'>{producto.precio} €</span>
+            <span
+              className={
+                producto.agregado
+                  ? 'agregado-precio'
+                  : 'listaProductos__precio '
+              }
+            >
+              {parseFloat(producto.precio).toLocaleString('es-ES', {
+                minimumFractionDigits: 2,
+              })}{' '}
+              €
+            </span>
             <span className='listaProductos__icono'>
-              <button>
+              <button
+                onClick={() => handleAgregarAlCarrito(producto)}
+                className={producto.agregado ? 'agregado-button' : 'button'}
+              >
                 <img
-                  className='carroCompra'
+                  className={
+                    producto.agregado ? 'agregado-carro' : 'carroCompra'
+                  }
                   src='../add-to-cart.png'
                   alt='cartIcon'
                 />

@@ -1,104 +1,109 @@
-/* Desktop version */
-.listaProductos {
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-  margin-top: 42px;
-  margin-left: -38px;
-}
-
-.listaProductos__item {
-  display: flex;
-  justify-content: space-between; /* Distribuir espacio entre columns*/
-  align-items: center; /* Centrar items verticalmente*/
-  padding: 15px;
-}
-
-.listaProductos__nombre {
-  flex: 13; /* Aumentar para cubrir espacio disponible*/
-  text-align: left; /* Alinear los nombres al principio */
-  font-size: 19px;
-  font-family: sans-serif;
-  font-weight: 30;
-  color: rgb(104, 91, 91);
-  margin-left: 40px;
-}
-
-.listaProductos__precio {
-  text-align: right;
-  flex: 3;
-  font-size: 24px;
-  font-weight: 540;
-  font-family: sans-serif;
-}
-
-.listaProductos__icono {
-  flex: 1;
-  text-align: right;
-  margin-left: 16px;
-}
-
+/* Shared styles */
 .listaProductos__icono button {
-  border: none;
-  border-radius: 3px;
-  background-color: #8cbf00;
-}
-
-.carroCompra {
-  height: 28px;
-  padding-right: 16px;
-  padding-left: 12px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  background-color: #8cbf00;
-}
-
-body,
-.parent-container {
-  margin: 0;
-  padding: 0;
-}
-
-/* Mobile version */
-@media only screen and (max-width: 600px) {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+ 
+  }
+  
+  /* Desktop version */
   .listaProductos {
-    width: 94%;
-    margin-bottom: calc(50vh - 150px);
-    margin-left: -23px;
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    margin-top: 42px;
+    margin-left: -38px;
   }
-
+  
   .listaProductos__item {
-    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
   }
-
+  
   .listaProductos__nombre {
-    font-size: 15px;
-    margin-left: -10px;
-    flex: 7;
+    flex: 13;
+    text-align: left;
+    font: 19px/1 sans-serif;
+    color: rgb(104, 91, 91);
+    margin-left: 40px;
   }
-
-  .listaProductos__precio {
-    font-size: 16px;
-    font-weight: 350;
-    margin-right: 10px;
-    flex: 2.8;
+  
+  .listaProductos__precio, .agregado-precio {
+    text-align: right;
+    flex: 3;
+    font: 24px/1.2 sans-serif;
   }
-
+  
+  .agregado-precio {
+    color: #c3c3c3;
+  }
+  
   .listaProductos__icono {
-    text-align: center;
-    margin: 10px auto;
+    flex: 1;
+    text-align: right;
+    margin-left: 16px;
   }
-
-  .listaProductos__icono button {
-    padding: 1px 1px;
+  
+  .listaProductos__icono button:hover {
+    background-color: #b0c37c;
+    height: 28px;
+    border-radius: 3px;
   }
-
-  .carroCompra {
-    height: 23px;
-    padding-right: 20px;
-    padding-left: 12px;
-    padding-top: 5px;
-    padding-bottom: 3px;
+  
+  .carroCompra, .agregado-carro {
+    height: 28px;
+    padding: 5px 16px;
     background-color: #8cbf00;
+    border-radius: 3px;
   }
-}
+  
+  .carroCompra:hover {
+    background-color: #b0c37c;
+    height: 28px;
+  }
+  
+  .agregado-carro {
+    background-color: #c3c3c3;
+  }
+  
+  /* Mobile version */
+  @media only screen and (max-width: 600px) {
+    .listaProductos {
+      width: 94%;
+      margin-bottom: calc(50vh - 150px);
+      margin-left: -23px;
+    }
+  
+    .listaProductos__item {
+      padding: 10px;
+    }
+  
+    .listaProductos__nombre {
+      font-size: 15px;
+      margin-left: -10px;
+      flex: 7;
+    }
+  
+    .listaProductos__precio {
+      font-size: 16px;
+      font-weight: 350;
+      margin-right: 10px;
+      flex: 2.8;
+    }
+  
+    .listaProductos__icono {
+      text-align: center;
+      margin: 10px auto;
+    }
+  
+    .carroCompra {
+      height: 23px;
+      padding: 5px 16px 3px;
+    }
+  }
+  
+  
+  
