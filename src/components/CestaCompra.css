@@ -1,0 +1,102 @@
+.cesta-compra {
+  width: 35vw;
+  border-collapse: collapse;
+  margin: 10px 0 0 10px;
+  height: 42vh;
+  box-shadow: rgba(172, 174, 176, 0.3) 0px 1px 2px 0px, rgba(127, 130, 133, 0.15) 0px 2px 6px 2px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.cesta-compra::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 0;
+  border-top: 1px solid #f3f1f1;
+}
+
+.cesta-compra th,
+.cesta-compra td {
+  padding: 8px 17px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cesta-compra th[colspan='2'] {
+  text-align: left;
+}
+
+.cesta-compra tbody tr:not(:last-child) {
+  border-bottom: 1px solid #f3f1f1;
+}
+
+.cesta-body tr {
+  height: 11.8vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cesta-body tr:not(:last-child) {
+  border-top: 0.5px solid #f6f6f6;
+  margin: 0 10px;
+}
+
+.cesta-body tr:not(:first-child) {
+  border-top: 0.5px solid #ececec;
+}
+
+.precio-total {
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.texto-total {
+  font-size: 26px;
+  font-weight: 630;
+  margin-right: 9px;
+}
+
+.texto-total-productos {
+  font-size: 21px;
+}
+
+.fila-titulo {
+  height: 6.5vh;
+  display: flex;
+  align-items: center;
+  border-bottom: 1.6px solid #8cbf00;
+}
+
+.fila-titulo th {
+  margin-left: 10px;
+  font-weight: 500;
+  color: #8cbf00;
+  font-size: 19px;
+}
+
+.fila-total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.producto-imagen {
+  width: 70px;
+  padding: 0px;
+  border: 1.5px solid #d1cbcb;
+  margin-right: 18px;
+}
+
+.precio-producto {
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.fila-nombre {
+  font-size: 18px;
+  width: 20vw;
+  text-align: left;
+}
