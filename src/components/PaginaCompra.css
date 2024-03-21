@@ -1,0 +1,6 @@
+.container-componentes {
+  display: flex;
+  width: 100vw;
+  flex-direction: row;
+  justify-content: space-around
+}
