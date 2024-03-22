@@ -1,14 +1,15 @@
-/* Estilos comunes para versiones desktop y movil */
+/* Versión Desktop */
+/* Estilos para la cesta de la compra  */
 .cesta-compra {
   width: 35vw;
   border-collapse: collapse;
   margin: 60px 0 0 10px;
-
   box-shadow: rgba(172, 174, 176, 0.3) 0px 1px 2px 0px,
     rgba(127, 130, 133, 0.15) 0px 2px 6px 2px;
   border-radius: 2px;
   position: relative;
-  margin-left: -40px;
+  margin-right: 42px;
+  margin-bottom: 25px;
 }
 
 .cesta-compra::before {
@@ -20,6 +21,12 @@
   border-top: 1px solid #f3f1f1;
 }
 
+.btn-borrar-producto {
+  border: none;
+  background: none;
+  width: fit-content;
+}
+/* Estilos para los headers y las celdas de la tabla */
 .cesta-compra th,
 .cesta-compra td {
   padding: 8px 17px;
@@ -32,10 +39,12 @@
   text-align: left;
 }
 
+/* Estilos para las filas */
 .cesta-compra tbody tr:not(:last-child) {
   border-bottom: 1px solid #f3f1f1;
 }
 
+/* Estilos para las filas del body */
 .cesta-body tr {
   height: 15.6vh;
   display: flex;
@@ -43,15 +52,7 @@
   justify-content: space-between;
 }
 
-.cesta-body tr:not(:last-child) {
-  border-top: 0.5px solid #f6f6f6;
-  margin: 0 10px;
-}
-
-.cesta-body tr:not(:first-child) {
-  border-top: 0.5px solid #ececec;
-}
-
+/* Estilos para diferentos elementos de texto */
 .precio-total {
   font-size: 27px;
   font-weight: 700;
@@ -67,6 +68,7 @@
   font-size: 21px;
 }
 
+/* Estilos para el título de la fila  */
 .fila-titulo {
   height: 8.5vh;
   display: flex;
@@ -81,11 +83,13 @@
   font-size: 19px;
 }
 
+/* Estilos para la fila del total */
 .fila-total {
   display: flex;
   justify-content: space-between;
 }
 
+/* Estilos para las imágenes de los productos */
 .producto-imagen {
   width: 70px;
   padding: 0px;
@@ -93,22 +97,73 @@
   margin-right: 18px;
 }
 
+/* Estilos para los precios */
 .precio-producto {
   font-size: 23px;
   font-weight: 500;
+  display: flex;
+  align-content: flex-start;
+  /* justify-content: flex-end; */
+  flex-direction: row-reverse;
 }
 
+.precio-producto ion-icon {
+  margin-left: 5px;
+  font-size: 21px;
+  color: rgb(101, 39, 39);
+  cursor: pointer;
+}
+
+.precio-producto ion-icon:hover {
+  color: rgb(230, 32, 32);
+}
+
+/* Estilos para los nombres de los productos */
 .fila-nombre {
   font-size: 18px;
   width: 20vw;
   text-align: left;
 }
 
+/* Ajustes para pantallas intermedias */
+@media only screen and (max-width: 1250px) {
+  .precio-producto {
+    font-size: 21px;
+    font-weight: 500;
+  }
+
+  .precio-total {
+    font-size: 21px;
+    font-weight: 700;
+  }
+
+  .texto-total {
+    font-size: 22px;
+    font-weight: 630;
+    margin-right: 9px;
+  }
+
+  .fila-nombre {
+    font-size: 18px;
+  }
+
+  .cesta-compra {
+    width: 35vw;
+  }
+}
+
+/* Versión intermedia */
 @media only screen and (max-width: 1000px) {
   .texto-total {
     font-size: 24px;
     font-weight: 630;
     margin-right: 9px;
+  }
+
+  .fila-nombre {
+    font-size: 18px;
+    width: 50vw;
+    text-align: left;
   }
 
   .precio-total {
@@ -135,28 +190,30 @@
     border-radius: 2px;
     position: relative;
     height: fit-content;
+    position: sticky; /* cesta de la compra sticky en el final de la pantalla */
+    bottom: 0;
+    z-index: 1;
   }
 }
 
-/* mobile version */
+/* Versión mobile */
 @media only screen and (max-width: 700px) {
   .cesta-body tr {
-    height: 7.6vh;
+    height: 7.8vh;
   }
 
   .texto-total {
-    font-size: 24px;
+    font-size: 23px;
     font-weight: 630;
     margin-right: 9px;
   }
 
   .precio-total {
-    font-size: 25px;
+    font-size: 24px;
     font-weight: 700;
   }
 
   .fila-titulo th {
-    /* margin-left: 10px; */
     font-weight: 500;
     color: #8cbf00;
     font-size: 18px;
@@ -185,5 +242,9 @@
     border-radius: 2px;
     position: relative;
     height: fit-content;
+    margin-bottom: 0px;
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
   }
 }

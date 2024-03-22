@@ -6,11 +6,12 @@
 }
 
 @media only screen and (max-width: 1000px) {
+
   .container-componentes {
     display: flex;
     width: 100vw;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-content: center;
   }
 }
