@@ -1,9 +1,11 @@
+/* Estilos comunes para versiones desktop y movil */
 .cesta-compra {
   width: 35vw;
   border-collapse: collapse;
   margin: 60px 0 0 10px;
-  height: 60vh;
-  box-shadow: rgba(172, 174, 176, 0.3) 0px 1px 2px 0px, rgba(127, 130, 133, 0.15) 0px 2px 6px 2px;
+
+  box-shadow: rgba(172, 174, 176, 0.3) 0px 1px 2px 0px,
+    rgba(127, 130, 133, 0.15) 0px 2px 6px 2px;
   border-radius: 2px;
   position: relative;
   margin-left: -40px;
@@ -35,7 +37,7 @@
 }
 
 .cesta-body tr {
-  height: 15.5vh;
+  height: 15.6vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -66,7 +68,7 @@
 }
 
 .fila-titulo {
-  height: 9vh;
+  height: 8.5vh;
   display: flex;
   align-items: center;
   border-bottom: 1.6px solid #8cbf00;
@@ -100,4 +102,88 @@
   font-size: 18px;
   width: 20vw;
   text-align: left;
+}
+
+@media only screen and (max-width: 1000px) {
+  .texto-total {
+    font-size: 24px;
+    font-weight: 630;
+    margin-right: 9px;
+  }
+
+  .precio-total {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .fila-titulo {
+    height: 6vh;
+    display: flex;
+    border-bottom: 1.6px solid #8cbf00;
+  }
+
+  .texto-total-productos {
+    font-size: 18px;
+  }
+
+  .cesta-compra {
+    width: 100vw;
+    border-collapse: collapse;
+    margin: 0px;
+    box-shadow: rgba(172, 174, 176, 0.3) 0px 1px 2px 0px,
+      rgba(127, 130, 133, 0.15) 0px 2px 6px 2px;
+    border-radius: 2px;
+    position: relative;
+    height: fit-content;
+  }
+}
+
+/* mobile version */
+@media only screen and (max-width: 700px) {
+  .cesta-body tr {
+    height: 7.6vh;
+  }
+
+  .texto-total {
+    font-size: 24px;
+    font-weight: 630;
+    margin-right: 9px;
+  }
+
+  .precio-total {
+    font-size: 25px;
+    font-weight: 700;
+  }
+
+  .fila-titulo th {
+    /* margin-left: 10px; */
+    font-weight: 500;
+    color: #8cbf00;
+    font-size: 18px;
+    margin-left: 0px;
+    padding-left: 4px;
+  }
+
+  .fila-titulo {
+    height: 6.2vh;
+    display: flex;
+    border-bottom: 1.6px solid #8cbf00;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .texto-total-productos {
+    font-size: 21px;
+  }
+
+  .cesta-compra {
+    width: 100vw;
+    border-collapse: collapse;
+    margin: 0px;
+    box-shadow: rgba(172, 174, 176, 0.3) 0px 1px 2px 0px,
+      rgba(127, 130, 133, 0.15) 0px 2px 6px 2px;
+    border-radius: 2px;
+    position: relative;
+    height: fit-content;
+  }
 }

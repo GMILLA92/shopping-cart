@@ -16,7 +16,7 @@ function ListaProductos ({ productos, carrito, agregarAlCarrito }) {
 
   // función para añadir un producto al carrito
   const handleAgregarAlCarrito = producto => {
-    agregarAlCarrito(producto) // llamando la función padre 
+    agregarAlCarrito(producto) // llamando la función padre
   }
 
   useEffect(() => {
@@ -31,7 +31,7 @@ function ListaProductos ({ productos, carrito, agregarAlCarrito }) {
   }, [carrito]) //usando el hook de efecto
 
   return (
-    <div>
+    <div className='container-lista'>
       <ul className='listaProductos'>
         {productosState.map((producto, index) => (
           <li key={index} className='listaProductos__item'>
@@ -44,23 +44,32 @@ function ListaProductos ({ productos, carrito, agregarAlCarrito }) {
               }
             >
               {parseFloat(producto.precio).toLocaleString('es-ES', {
-                minimumFractionDigits: 2,
+                minimumFractionDigits: 2
               })}{' '}
               €
             </span>
             <span className='listaProductos__icono'>
-              <button
-                onClick={() => handleAgregarAlCarrito(producto)}
-                className={producto.agregado ? 'agregado-button' : 'button'}
-              >
-                <img
-                  className={
-                    producto.agregado ? 'agregado-carro' : 'carroCompra'
-                  }
-                  src='../add-to-cart.png'
-                  alt='cartIcon'
-                />
-              </button>
+              {!producto.agregado && (
+                <button
+                  onClick={() => handleAgregarAlCarrito(producto)}
+                  className={'button'}
+                >
+                  <img
+                    className={'carroCompra'}
+                    src='../add-to-cart.png'
+                    alt='cartIcon'
+                  />
+                </button>
+              )}
+              {producto.agregado && (
+                <button disabled='true' className={'agregado-button'}>
+                  <img
+                    className={'agregado-carro'}
+                    src='../add-to-cart.png'
+                    alt='cartIcon'
+                  />
+                </button>
+              )}
             </span>
           </li>
         ))}
