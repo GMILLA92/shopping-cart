@@ -45,10 +45,12 @@ function PaginaCompra () {
   }
 
   // función para eliminar un producto del carrito
-  const eliminarProducto = (producto) => {
-    const updatedCarrito = carrito.filter((item) => item.nombre !== producto.nombre);
-    setCarrito(updatedCarrito);
-  };
+  const eliminarProducto = producto => {
+    const updatedCarrito = carrito.filter(
+      item => item.nombre !== producto.nombre
+    )
+    setCarrito(updatedCarrito)
+  }
 
   return (
     <div className='container-componentes'>

@@ -49,6 +49,15 @@
   margin-left: 40px;
 }
 
+.listaProductos__nombreNoDisp {
+  color: rgb(210, 26, 26);
+  flex: 13;
+  text-align: left;
+  font: 19px/1 sans-serif;
+  margin-left: 40px;
+  font-style: italic;
+}
+
 .listaProductos__precio,
 .agregado-precio {
   text-align: right;

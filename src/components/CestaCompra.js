@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import './CestaCompra.css'
 
-function CestaCompra({ carrito, eliminarProducto }) {
-  const [total, setTotal] = useState(0);
+function CestaCompra ({ carrito, eliminarProducto }) {
+  const [total, setTotal] = useState(0)
 
   // comprobando si se trata de una vista mobile
-  const isMobile = window.innerWidth <= 600;
+  const isMobile = window.innerWidth <= 600
 
   // calcular el precio total limitando decimales
   useEffect(() => {
-    const precioTotal = carrito.reduce(
-      (acum, producto) => acum + parseFloat(producto.precio),
-      0
-    );
-    setTotal(parseFloat(precioTotal.toFixed(2)));
-  }, [carrito]);
+    let precioTotal = 0
+    carrito.forEach(producto => {
+      if (producto.precio !== '' && !isNaN(parseFloat(producto.precio))) {
+        precioTotal += parseFloat(producto.precio)
+      }
+    })
+    setTotal(parseFloat(precioTotal.toFixed(2)))
+  }, [carrito])
 
   // renderizar el componente
   return (
@@ -36,7 +38,8 @@ function CestaCompra({ carrito, eliminarProducto }) {
                     alt={producto.nombre}
                     className='producto-imagen'
                   />
-                  {producto.nombre}
+                  {producto.nombre !== '' && producto.nombre}
+                  {producto.nombre === '' && 'Nombre del producto no disponible'}
                 </td>
                 <td className='precio-producto'>
                   <button
@@ -45,11 +48,13 @@ function CestaCompra({ carrito, eliminarProducto }) {
                   >
                     <ion-icon name='trash-outline'></ion-icon>
                   </button>
-                  {parseFloat(producto.precio).toLocaleString('es-ES')} €
+                  {producto.precio !== '' && !isNaN(parseFloat(producto.precio))
+                    ? parseFloat(producto.precio).toLocaleString('es-ES') + ' €'
+                    : 'Precio no disponible'}
                 </td>
               </tr>
             ))}
-          {/* renderizar la fila con el total  */}
+          {/* renderizar la fila con el total */}
           <tr className='fila-total'>
             <td colSpan='2'>
               <span className='texto-total'>TOTAL</span>
@@ -71,7 +76,7 @@ function CestaCompra({ carrito, eliminarProducto }) {
         </tbody>
       </table>
     </div>
-  );
+  )
 }
 
-export default CestaCompra;
+export default CestaCompra

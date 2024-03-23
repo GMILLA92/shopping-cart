@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import './ListaProductos.css';
+import React, { useState, useEffect } from 'react'
+import './ListaProductos.css'
 
-function ListaProductos({
+function ListaProductos ({
   productos,
   carrito,
   agregarAlCarrito,
@@ -12,24 +12,24 @@ function ListaProductos({
       ...producto,
       agregado: false // inicialmente no se añade ningun producto al carro
     }))
-  );
+  )
 
   // comprobando si se trata de una vista mobile
-  const isMobile = window.innerWidth <= 600;
+  const isMobile = window.innerWidth <= 600
 
   // la funcion comprobará si el producto está en el carrito
   const estaEnCarrito = producto => {
-    return carrito.some(item => item.nombre === producto.nombre);
-  };
+    return carrito.some(item => item.nombre === producto.nombre)
+  }
 
   const handleEliminarProducto = producto => {
-    eliminarProducto(producto); 
-  };
+    eliminarProducto(producto)
+  }
 
   // función para añadir un producto al carrito
   const handleAgregarAlCarrito = producto => {
-    agregarAlCarrito(producto); // llamando la función padre
-  };
+    agregarAlCarrito(producto) // llamando la función padre
+  }
 
   useEffect(() => {
     // actualizando el estado para definir los productos agregados
@@ -38,15 +38,22 @@ function ListaProductos({
         ...item,
         agregado: estaEnCarrito(item)
       }))
-    );
-  }, [carrito]); //usando el hook de efecto
+    )
+  }, [carrito]) //usando el hook de efecto
 
   return (
     <div className='container-lista'>
       <ul className='listaProductos'>
         {productosState.map((producto, index) => (
           <li key={index} className='listaProductos__item'>
-            <span className='listaProductos__nombre'>{producto.nombre}</span>
+            {producto.nombre !== '' && (
+              <span className='listaProductos__nombre'>{producto.nombre}</span>
+            )}
+            {producto.nombre === '' && (
+              <span className='listaProductos__nombreNoDisp'>
+                Nombre del producto no disponible
+              </span>
+            )}
             <span
               className={
                 producto.agregado
@@ -71,20 +78,24 @@ function ListaProductos({
               </div>
             </span>
             <span className='listaProductos__icono'>
-              {!producto.agregado && (
-                <button
-                  onClick={() => handleAgregarAlCarrito(producto)}
-                  className={'button'}
-                >
-                  <img
-                    className={'carroCompra'}
-                    src='../add-to-cart.png'
-                    alt='cartIcon'
-                  />
-                </button>
-              )}
+              {!producto.agregado &&
+                producto.precio !== '' &&
+                !isNaN(parseFloat(producto.precio)) && (
+                  <button
+                    onClick={() => handleAgregarAlCarrito(producto)}
+                    className={'button'}
+                  >
+                    <img
+                      className={'carroCompra'}
+                      src='../add-to-cart.png'
+                      alt='cartIcon'
+                    />
+                  </button>
+                )}
               {/* renderizar el botón desactivado si el producto ya se ha añadido */}
-              {producto.agregado && (
+              {(producto.agregado ||
+                producto.precio === '' ||
+                isNaN(parseFloat(producto.precio))) && (
                 <button disabled='true' className={'agregado-button'}>
                   <img
                     className={'agregado-carro'}
@@ -98,7 +109,7 @@ function ListaProductos({
         ))}
       </ul>
     </div>
-  );
+  )
 }
 
-export default ListaProductos;
+export default ListaProductos
