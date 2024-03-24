@@ -47,4 +47,3 @@ Para correr los tests unitarios usando Jest, usar el siguiente comando:
 npm test
 ```
 
-
